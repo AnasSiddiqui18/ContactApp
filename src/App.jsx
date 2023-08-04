@@ -76,6 +76,15 @@ const App = () => {
     getContacts();
   };
 
+  const clearAll = async () => {
+    const contactSnapshot = await getDocs(userCollectionRef);
+
+    const deletePromise = contactSnapshot.docs.map((doc) => deleteDoc(doc.ref));
+
+    await Promise.all(deletePromise);
+    getContacts();
+  };
+
   return (
     <div className="container">
       <div className="contact-section">
@@ -108,6 +117,9 @@ const App = () => {
                 }
               >
                 {data.id ? "Update Contact" : "Create Contact"}
+              </button>
+              <button onClick={clearAll} className="add-btn">
+                Clear All Contact
               </button>
             </div>
           </div>
