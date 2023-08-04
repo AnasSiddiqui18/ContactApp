@@ -81,7 +81,7 @@ const App = () => {
       <div className="contact-section">
         <div className="contactApp">
           <div className="top">
-            <h2> Fire Contact App</h2>
+            <h2> Contact App</h2>
             <input
               type="text"
               className="input margin"
