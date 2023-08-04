@@ -79,11 +79,19 @@ const App = () => {
   const clearAll = async () => {
     const contactSnapshot = await getDocs(userCollectionRef);
 
+    console.log(contactSnapshot);
+
     const deletePromise = contactSnapshot.docs.map((doc) => deleteDoc(doc.ref));
 
-    await Promise.all(deletePromise);
+    // contactSnapshot.docs.map((value) => {
+    //   console.log(value.ref); //? the value.ref is what that tell the firebase firestore to delete a particular document according to its reference each document has a unique reference
+    // });
+
+    await Promise.all(deletePromise); //? this line wait until all the document is deleted successfully
     getContacts();
   };
+
+  // "lf5b9idFEf5nsbHnRL8F"
 
   return (
     <div className="container">
